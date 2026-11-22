@@ -1,0 +1,17 @@
+{
+    "short_name": "AllInFastFood",
+    "name": "All In Fast Food - Carta Digital y Delivery",
+    "icons": [
+        {
+            "src": "https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "./index.html",
+    "background_color": "#111215",
+    "theme_color": "#F97316",
+    "display": "standalone",
+    "orientation": "any"
+}

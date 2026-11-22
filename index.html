@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="All In Fast Food - Carta digital de hamburguesas, alitas, chicken fingers, costillas de cerdo y almuerzo del dia en Genaro Gamarra 1886, Zona Miraflores.">
+    <title>All In Fast Food | Carta de Pizarra y Delivery</title>
+    <!-- Semana 2 - Arquitectura PWA Offline -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#F97316">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1">
+    <link rel="apple-touch-icon" href="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Semana 1 - Modo Oscuro -->
+    <link rel="stylesheet" href="./CSS/styles.css">
+</head>
+<body class="modo-oscuro dark-mode">
+
+    <!-- Semana 1 - Menu Hamburguesa -->
+    <header class="app-cabecera">
+        <div class="app-cabecera__fila">
+            <div class="header-identidad">
+                <div class="marca-pildora">
+                    <span class="marca-pildora__emblema">
+                        <img src="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1" alt="Logo oficial de All In Fast Food" class="marca-logo-img">
+                    </span>
+                    <span class="marca-pildora__bloque">
+                        <span class="marca-pildora__titulo">
+                            <span class="marca-pildora__palabra-fuego">ALL IN</span>
+                            <span class="marca-pildora__palabra-carta">FAST FOOD</span>
+                        </span>
+                        <span id="marcaNombreTexto" class="marca-pildora__texto">All In Fast Food | Invitado</span>
+                    </span>
+                </div>
+                <span id="estadoRed" class="indicador-red" role="status" aria-live="polite">ONLINE</span>
+            </div>
+
+            <nav class="dock-acciones" id="dockAcciones" aria-label="Barra de navegacion principal">
+                <div class="dock-acciones__pista">
+                    <button type="button" class="dock-acciones__btn barra-celeste-item dock-acciones__btn--activo activo" data-vista="vista-catalogo" data-rol="cliente">
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Carta</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vistaMisPedidos" data-rol="cliente">
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Mis Pedidos</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-cotizador" data-rol="cliente">
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Armar Combo</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-contacto" data-rol="cliente">
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Ubicanos</span>
+                    </button>
+
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-admin-control" data-rol="admin" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Control</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-op-pedidos" data-rol="operativo" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Pedidos</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-op-consultas" data-rol="operativo" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Consultas</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-op-reservas" data-rol="operativo" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Reservas</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-op-productos" data-rol="operativo" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Platos</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-op-promo" data-rol="operativo" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Almuerzo</span>
+                    </button>
+                    <button type="button" class="dock-acciones__btn barra-celeste-item" data-vista="vista-admin-auditoria" data-rol="admin" hidden>
+                        <span class="dock-item__icono">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </span>
+                        <span class="dock-item__texto">Auditoria</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Semana 3 - Buscador Google con Autocompletado -->
+            <div id="panelBuscadorSuperior" class="buscador-superior" data-rol="cliente">
+                <div class="buscador-superior__barra">
+                    <label for="buscadorProductos" class="sr-only">Buscar hamburguesas, alitas, fingers, costillas o salsas</label>
+                    <input type="search" id="buscadorProductos" class="buscador-superior__input" placeholder="Buscar burger, alitas, costillas..." autocomplete="off">
+                    <button type="button" id="btnLimpiarBusqueda" class="buscador-superior__limpiar" aria-label="Limpiar texto de busqueda" title="Limpiar busqueda" hidden>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                    <button type="button" id="btnLupa" class="btn-cabecera btn-cabecera--lupa" aria-label="Abrir buscador de carta" aria-expanded="false" aria-controls="panelBuscadorSuperior" title="Buscar en carta">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </button>
+                </div>
+                <div id="sugerenciasBuscador" class="sugerencias-buscador" role="listbox" aria-label="Sugerencias en vivo de la carta" hidden></div>
+            </div>
+
+            <div class="header-carrito-slot">
+                <!-- Semana 2 - Arquitectura PWA Offline -->
+                <button type="button" id="btnInstalarPWA" class="btn-cabecera btn-cabecera--instalar" hidden>Instalar App</button>
+                <!-- Semana 3 - Flujo de Pago Rapido -->
+                <button type="button" id="btnCarritoHeader" class="btn-cabecera btn-cabecera--carrito" data-rol="cliente" aria-label="Abrir carrito de pedidos" title="Ver carrito">
+                    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+                    <span class="btn-cabecera__texto-carrito">Pedido</span>
+                    <span id="badgeCarritoHeader" class="btn-cabecera__badge-carrito">0</span>
+                    <span id="montoCarritoHeader" class="btn-cabecera__monto-carrito">Bs. 0.00</span>
+                </button>
+            </div>
+
+            <div class="header-acciones">
+                <button type="button" id="btnAbrirAcceso" class="btn-cabecera btn-cabecera--acceso" aria-label="Abrir panel de cuenta y perfil" title="Cuenta y perfil">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span id="badgeRolActivo" class="badge-rol badge-rol--cliente">Cliente</span>
+                </button>
+                <!-- Semana 1 - Modo Oscuro -->
+                <button type="button" id="themeBtn" class="btn-cabecera btn-cabecera--icono" aria-label="Alternar pizarra oscura y modo claro" title="Pizarra oscura / modo claro">
+                    <svg class="icono-luna" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="icono-sol" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/></svg>
+                </button>
+                <button type="button" id="burguerBtn" class="btn-cabecera btn-cabecera--icono btn-cabecera--menu" aria-label="Abrir menu de navegacion" aria-expanded="false" aria-controls="drawerMenuMovil" title="Menu">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Semana 2 - Arquitectura PWA Offline -->
+    <div id="avisoColaOffline" class="aviso-offline-global" role="status" aria-live="polite" hidden>
+        <span id="textoAvisoOffline">Modo Offline activo: 0 operaciones en cola FIFO.</span>
+        <button type="button" id="btnSincronizarColaGlobal" class="btn-secundario" hidden>Sincronizar ahora</button>
+    </div>
+
+    <div class="contenedor-app">
+        <main class="area-contenido" id="areaContenido">
+            <div class="franja-operativa-rol" data-rol="operativo" hidden>
+                <span id="etiquetaModuloActivo" class="insignia-categoria" hidden></span>
+            </div>
+
+            <!-- Semana 3 - Flujo de Pago Rapido -->
+            <section id="vista-catalogo" class="vista-panel" data-rol="cliente">
+                <section class="bloque-destacado-dual" aria-label="Especiales destacados de All In Fast Food">
+                    <article id="bannerPromoExpress" class="destacado-card destacado-card--almuerzo banner-promo-express">
+                        <div class="destacado-card__cabecera">
+                            <div class="destacado-card__badges">
+                                <span class="ficha-etiqueta ficha-etiqueta--fuego">ALMUERZO DIARIO</span>
+                                <span class="destacado-card__subnota">El almuerzo cambia cada dia</span>
+                            </div>
+                            <span class="ficha-poker ficha-poker--naranja">
+                                <span class="ficha-poker__mini">MENU</span>
+                                <strong id="promoPrecio" class="ficha-poker__precio">Bs. 22.00</strong>
+                            </span>
+                        </div>
+                        <div class="destacado-card__media-una">
+                            <img src="https://www.dropbox.com/scl/fi/qo2ej3bdalfijih7bj87n/Almuerzo-diario.jpg?rlkey=pny2etzspuqcmpts8ygxk12bd&st=gf6q2d0y&raw=1" alt="Almuerzo Diario All In Fast Food - Toca para ampliar" class="destacado-card__foto img-ampliable" loading="lazy">
+                        </div>
+                        <div class="destacado-card__cuerpo">
+                            <h2 id="promoTitulo" class="destacado-card__titulo">Almuerzo Especial del Dia</h2>
+                            <p id="promoDescripcion" class="destacado-card__desc">Entrada: Tucumanita de ricota | Sopa: Mani con macarron | Segundo: Filete, chuleta o milanesa | Postre: Duraznos al jugo.</p>
+                            <div id="promoDetalleSeguro" class="destacado-card__detalle"></div>
+                        </div>
+                        <div class="destacado-card__pie">
+                            <div class="destacado-card__meta-reloj">
+                                <strong id="promoCuentaRegresiva" class="destacado-card__reloj" aria-label="Tiempo restante de menu del dia">--:--</strong>
+                                <span id="promoConfirmaciones" class="destacado-card__contador">0 pedidos hoy</span>
+                            </div>
+                            <button type="button" id="btnReclamarPromo" class="destacado-card__cta btn-tactil">Pedir Almuerzo</button>
+                        </div>
+                        <div class="barra-progreso banner-promo-express__barra">
+                            <div id="promoBarraTiempo" class="barra-progreso__relleno"></div>
+                        </div>
+                    </article>
+
+                    <article id="cardCostillasDestacado" class="destacado-card destacado-card--costillas">
+                        <div class="destacado-card__cabecera">
+                            <div class="destacado-card__badges">
+                                <span class="ficha-etiqueta ficha-etiqueta--rojo">SOLO EN LAS NOCHES</span>
+                                <span class="destacado-card__subnota">Costillitas y carta nocturna</span>
+                            </div>
+                            <span class="ficha-poker ficha-poker--rojo">
+                                <span class="ficha-poker__mini">NOCHE</span>
+                                <strong class="ficha-poker__precio">Bs. 60.00</strong>
+                            </span>
+                        </div>
+                        <div class="destacado-card__media-doble">
+                            <img src="https://www.dropbox.com/scl/fi/458cfbkg2xs9ih4s29bt6/Costillitas.jpg?rlkey=fkijtci2jn2gi59nasrl8urh8&st=6z38m5az&raw=1" alt="Costillitas de Cerdo All In Fast Food disponibles en las noches" class="destacado-card__foto img-ampliable" loading="lazy">
+                            <img src="https://www.dropbox.com/scl/fi/u8n7ieyqdilyfw4xnd6dm/Menu-Nocturno.jpg?rlkey=9k1o9nda9q3fckzzgzplta02h&st=pbong16b&raw=1" alt="Menu Nocturno oficial All In Fast Food disponible solo en las noches" class="destacado-card__foto img-ampliable" loading="lazy">
+                        </div>
+                        <div class="destacado-card__cuerpo">
+                            <h2 class="destacado-card__titulo">Costillitas &amp; Menu Nocturno</h2>
+                            <p class="destacado-card__desc">Las costillitas de cerdo (400g con papas y salsas, jueves y viernes) y todo el menu nocturno de hamburguesas, alitas y chicken fingers se sirven exclusivamente en las noches.</p>
+                            <p class="destacado-card__detalle"><strong>Servicio Nocturno</strong> | Toca las fotos para ver la carta en grande.</p>
+                        </div>
+                        <div class="destacado-card__pie">
+                            <button type="button" class="btn-secundario card-item__enlace-detalle" data-detalle-id="AI-02">Ver Costillitas</button>
+                            <button type="button" class="destacado-card__cta destacado-card__cta--rojo card-item__btn-simular btn-tactil" data-id="AI-02">+ Agregar Costillitas</button>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="pizarra-carta-panel panel-bloque barra-controles-catalogo" aria-label="Carta de pizarra All In Fast Food">
+                    <div class="barra-controles-catalogo__cabecera">
+                        <div>
+                            <h1 id="tituloPrincipalApp" class="pizarra-titulo-principal">CARTA DE PIZARRA ALL IN</h1>
+                            <p id="rutaCategoriaActual" class="pizarra-ruta">Carta &gt; Almuerzo Diario</p>
+                            <p id="resultadoFiltro" class="card-item__meta" aria-live="polite">Mostrando platos de la pestana activa.</p>
+                        </div>
+                        <div class="fila-tactil">
+                            <span id="banner-linea" class="banner-linea-compacto"><span id="indicador-linea-activa"><strong>ALMUERZO DIARIO</strong></span></span>
+                            <div class="campo-orden-compacto">
+                                <label for="selector-orden" class="sr-only">Ordenar platos</label>
+                                <select id="selector-orden" class="control-select">
+                                    <option value="destacado">Orden de carta</option>
+                                    <option value="precio-asc">Menor precio</option>
+                                    <option value="precio-desc">Mayor precio</option>
+                                    <option value="nombre-asc">Nombre A - Z</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="grupo-filtros-categoria" class="pestanas-carta chips-fila" role="tablist" aria-label="Pestanas de la carta de restaurante">
+                        <button type="button" class="btn-filtro btn-filtro--activo" data-categoria="Almuerzo Diario">Almuerzo Diario</button>
+                        <button type="button" class="btn-filtro" data-categoria="Menu Nocturno">Menu Nocturno</button>
+                        <button type="button" class="btn-filtro" data-categoria="Hamburguesas y Alitas">Hamburguesas y Alitas</button>
+                        <button type="button" class="btn-filtro" data-categoria="Fingers y Salsas">Fingers y Salsas</button>
+                    </div>
+
+                    <div id="contenedor-tarjetas" class="carta-filas-grid" aria-live="polite"></div>
+                </section>
+            </section>
+
+            <!-- Semana 3 - Vista Completa de Detalle de Producto -->
+            <section id="vistaDetalleProducto" class="vista-panel vista-seccion oculto" data-rol="cliente" aria-label="Detalle del plato" hidden>
+                <div class="detalle-producto__barra">
+                    <button type="button" id="btnVolverCatalogo" class="detalle-producto__btn-volver">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                        <span>Volver a la Carta</span>
+                    </button>
+                    <p id="detalleRutaProducto" class="detalle-producto__ruta" aria-label="Ruta del plato">Carta</p>
+                </div>
+
+                <article class="detalle-producto__tarjeta">
+                    <div class="detalle-producto__galeria">
+                        <div class="detalle-producto__foto-marco">
+                            <img id="detalleProductoImagen" class="detalle-producto__foto img-ampliable" src="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1" alt="Fotografia detallada del plato All In Fast Food">
+                        </div>
+                        <span class="detalle-producto__zoom-pista">Toca la imagen para ampliarla</span>
+                    </div>
+
+                    <div class="detalle-producto__info">
+                        <span id="detalleProductoCategoria" class="detalle-producto__categoria">Hamburguesas</span>
+                        <h2 id="detalleProductoTitulo" class="detalle-producto__titulo">Plato All In</h2>
+                        <div class="detalle-producto__precio-fila">
+                            <strong id="detalleProductoPrecio" class="detalle-producto__precio">Bs. 0.00</strong>
+                            <span id="detalleProductoStock" class="detalle-producto__stock">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Disponible en cocina - Recien preparado</span>
+                            </span>
+                        </div>
+
+                        <div class="detalle-producto__descripcion-bloque">
+                            <h3 class="detalle-producto__subtitulo">Ingredientes y Presentacion</h3>
+                            <p id="detalleProductoDescripcion" class="detalle-producto__texto"></p>
+                            <p id="detalleProductoTematica" class="detalle-producto__dato"></p>
+                            <p id="detalleProductoPresentacion" class="detalle-producto__dato"></p>
+                            <p id="detalleProductoFicha" class="detalle-producto__texto-sec"></p>
+                        </div>
+
+                        <div class="detalle-producto__cantidad-fila">
+                            <span class="detalle-producto__cantidad-label">Cantidad</span>
+                            <div class="detalle-producto__stepper" role="group" aria-label="Selector de cantidad">
+                                <button type="button" id="btnDetalleMenos" class="detalle-producto__stepper-btn" aria-label="Restar cantidad">-</button>
+                                <span id="detalleCantidadValor" class="detalle-producto__stepper-valor" aria-live="polite">1</span>
+                                <button type="button" id="btnDetalleMas" class="detalle-producto__stepper-btn detalle-producto__stepper-btn--mas" aria-label="Sumar cantidad">+</button>
+                            </div>
+                        </div>
+
+                        <div class="detalle-producto__acciones">
+                            <button type="button" id="btnDetalleAgregar" class="detalle-producto__btn-agregar">+ Agregar al Pedido</button>
+                            <button type="button" id="btnDetalleComprarAhora" class="detalle-producto__btn-comprar">Pedir ahora</button>
+                        </div>
+                    </div>
+                </article>
+
+                <section class="detalle-producto__relacionados" aria-label="Platos relacionados">
+                    <div class="barra-controles-catalogo__cabecera">
+                        <h2 class="titulo-seccion">Acompana tu Pedido con</h2>
+                        <span class="insignia-categoria">Sugeridos de la Carta</span>
+                    </div>
+                    <div id="contenedorRelacionados" class="carta-filas-grid" aria-live="polite"></div>
+                </section>
+            </section>
+
+            <section id="vistaMisPedidos" class="vista-panel" data-rol="cliente" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <div>
+                            <h2 class="titulo-seccion">Pedidos Pendientes</h2>
+                            <p class="card-item__meta">Puedes editar o cancelar tus pedidos mientras cocina no los haya confirmado.</p>
+                        </div>
+                        <button type="button" id="btnRefrescarMisPedidos" class="btn-secundario">Actualizar</button>
+                    </div>
+                    <div id="listaPedidosPendientesCliente" class="lista-elementos" aria-live="polite"></div>
+                </article>
+
+                <article class="panel-bloque">
+                    <h2 class="titulo-seccion">Historial de Pedidos</h2>
+                    <div id="listaPedidosHistorialCliente" class="lista-elementos" aria-live="polite"></div>
+                </article>
+
+                <div id="invitacionCuentaPedidos" class="micro-guia fila-tactil">
+                    <span>Quieres guardar tu direccion, celular, salsas preferidas e historial? Crea una cuenta rapida en segundos.</span>
+                    <button type="button" class="btn-secundario btn-abrir-registro-rapido">Crear cuenta rapida</button>
+                </div>
+            </section>
+
+            <section id="vista-cotizador" class="vista-panel" data-rol="cliente" hidden>
+                <div class="subtabs-bar" role="tablist" aria-label="Herramientas para armar combos y reservas">
+                    <button type="button" class="btn-subtab btn-subtab--activo" data-grupo="cotizador" data-subtab="subtab-calculador">Armar Combo Grupal</button>
+                    <button type="button" class="btn-subtab" data-grupo="cotizador" data-subtab="subtab-turnos">Reservas y Salsas</button>
+                </div>
+
+                <div id="subtab-calculador" class="panel-subtab" data-grupo="cotizador">
+                    <div class="grilla-dos-col">
+                        <article class="panel-bloque">
+                            <div class="cotizador-cabecera-card">
+                                <h2 class="titulo-seccion">Calculador de Comensales</h2>
+                                <button type="button" id="btnEjemploCotizador" class="cotizador-btn-ejemplo">Ver ejemplo rapido</button>
+                            </div>
+                            <p class="cotizador-subtitulo">Calcula al instante tu pedido grupal de hamburguesas o almuerzos antes de confirmar.</p>
+                            <div class="formulario-estandar">
+                                <div class="campo-grupo">
+                                    <label for="hrs" class="etiqueta-campo">Cantidad de Porciones Poker (28 Bs./porcion)</label>
+                                    <input type="number" id="hrs" class="control-input" value="1" min="1" inputmode="numeric">
+                                </div>
+                                <h3 class="subtitulo-bloque">Total estimado: <span id="total">28</span> Bs.</h3>
+                                <button type="button" id="btnModal" class="btn-primario">Agregar y Confirmar Pedido</button>
+                            </div>
+                        </article>
+
+                        <article class="panel-bloque">
+                            <h2 class="titulo-seccion">Combo Rapido Personalizado</h2>
+                            <p class="cotizador-subtitulo">Elige un combo de la casa e indica tus salsas preferidas (Barbacoa, Miel y Mostaza o Picante) y notas de coccion.</p>
+                            <form id="orderForm" class="formulario-estandar" novalidate>
+                                <div class="campo-grupo">
+                                    <label for="variantSelect" class="etiqueta-campo">Combo de la Casa All In</label>
+                                    <select id="variantSelect" class="control-select">
+                                        <option value="Combo Duo Full (2 Hamburguesas Full + 2 Salsas)" data-precio="50">Combo Duo Full (2 Hamburguesas Full + 2 Salsas) - Bs. 50</option>
+                                        <option value="Combo Mesa Poker (Alitas 12u + Chicken Fingers 9u + Salsas)" data-precio="100">Combo Mesa Poker (Alitas 12u + Chicken Fingers 9u) - Bs. 100</option>
+                                        <option value="Combo All In Grupal (2 Burgers All In + Alitas 12u + Salsas)" data-precio="125">Combo All In Grupal (2 Burgers All In + Alitas 12u) - Bs. 125</option>
+                                    </select>
+                                </div>
+                                <div class="campo-grupo">
+                                    <div class="cabecera-campo">
+                                        <label for="userTikTok" class="etiqueta-campo">Salsas elegidas y notas de cocina</label>
+                                        <span id="errUserTikTok" class="estado-validacion-campo"></span>
+                                    </div>
+                                    <input type="text" id="userTikTok" class="control-input" placeholder="Ej. Salsa Barbacoa y Picante aparte, carne bien cocida">
+                                </div>
+                                <button type="submit" class="btn-primario">Agregar Combo al Pedido</button>
+                            </form>
+                            <div id="estadoOrdenDirecta" class="feedback-formulario" aria-live="polite" hidden></div>
+                        </article>
+                    </div>
+                </div>
+
+                <div id="subtab-turnos" class="panel-subtab" data-grupo="cotizador" hidden>
+                    <div class="grilla-dos-col">
+                        <article class="panel-bloque">
+                            <h2 class="titulo-seccion">Reserva de Mesa o Costillas</h2>
+                            <p class="cotizador-subtitulo">Asegura tu mesa o reserva tus Costillas de Cerdo de jueves y viernes por la noche.</p>
+                            <form id="formReserva" class="formulario-estandar" novalidate>
+                                <div class="campo-grupo">
+                                    <div class="cabecera-campo">
+                                        <label for="clienteNombre" class="etiqueta-campo">Nombre del Cliente</label>
+                                        <span id="errClienteReserva" class="estado-validacion-campo"></span>
+                                    </div>
+                                    <input type="text" id="clienteNombre" class="control-input" placeholder="Ingresa tu nombre completo">
+                                </div>
+                                <div class="campo-grupo">
+                                    <label for="salaSelect" class="etiqueta-campo">Tipo de Reserva</label>
+                                    <select id="salaSelect" class="control-select">
+                                        <option value="MESA-01|Mesa en Local All In Fast Food">Mesa en Local All In Fast Food</option>
+                                        <option value="COSTILLAS-02|Reserva Costillas Jueves/Viernes">Reserva Costillas Jueves/Viernes</option>
+                                        <option value="DELIV-03|Delivery Programado">Delivery Programado</option>
+                                    </select>
+                                </div>
+                                <div class="grilla-dos-col">
+                                    <div class="campo-grupo">
+                                        <label for="fechaReserva" class="etiqueta-campo">Fecha</label>
+                                        <input type="date" id="fechaReserva" class="control-input">
+                                    </div>
+                                    <div class="campo-grupo">
+                                        <label for="horarioReserva" class="etiqueta-campo">Horario</label>
+                                        <select id="horarioReserva" class="control-select">
+                                            <option value="12:30">12:30 hrs (Almuerzo)</option>
+                                            <option value="19:00">19:00 hrs (Cena)</option>
+                                            <option value="20:30">20:30 hrs (Noche)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primario">Confirmar Reserva</button>
+                            </form>
+                            <ul id="listaReservas" class="lista-elementos" aria-live="polite"></ul>
+                        </article>
+
+                        <article class="panel-bloque">
+                            <h2 class="titulo-seccion">Lista Rapida de Salsas y Pedidos del Grupo</h2>
+                            <p class="cotizador-subtitulo">Anota aqui lo que pide cada amigo (ej. Burger All In sin cebolla, Alitas BBQ) antes de cerrar el carrito.</p>
+                            <div class="campo-grupo">
+                                <label for="inputCancion" class="etiqueta-campo">Plato, salsa o preferencia</label>
+                                <div class="fila-tactil">
+                                    <input type="text" id="inputCancion" class="control-input" placeholder="Ej. Alitas 12u con salsa Barbacoa y Picante">
+                                    <button type="button" id="btnPedir" class="btn-primario">+ Anotar</button>
+                                </div>
+                            </div>
+                            <div id="listaCanciones" class="lista-elementos" aria-live="polite"></div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="vista-contacto" class="vista-panel" data-rol="cliente" hidden>
+                <div class="grilla-dos-col">
+                    <article class="panel-bloque ficha-ubicacion">
+                        <span class="ficha-etiqueta ficha-etiqueta--fuego">UBICANOS EN MIRAFLORES</span>
+                        <h2 class="titulo-seccion">All In Fast Food</h2>
+                        <p class="cotizador-subtitulo">Visitanos en nuestro local o pide delivery directo por WhatsApp con atencion inmediata.</p>
+                        <div class="ubicacion-datos">
+                            <div class="ubicacion-datos__fila">
+                                <span class="ubicacion-datos__label">Direccion</span>
+                                <strong class="ubicacion-datos__valor">Genaro Gamarra 1886, Zona Miraflores</strong>
+                            </div>
+                            <div class="ubicacion-datos__fila">
+                                <span class="ubicacion-datos__label">Reservas y Delivery</span>
+                                <strong class="ubicacion-datos__valor">78929539 (WhatsApp 59178929539)</strong>
+                            </div>
+                            <div class="ubicacion-datos__fila">
+                                <span class="ubicacion-datos__label">Especialidad Jueves y Viernes</span>
+                                <strong class="ubicacion-datos__valor">Costillas de Cerdo 400g + Papas + Salsas (Bs. 60.00)</strong>
+                            </div>
+                            <div class="ubicacion-datos__fila">
+                                <span class="ubicacion-datos__label">Almuerzo Especial</span>
+                                <strong class="ubicacion-datos__valor">Menu de 4 tiempos que cambia cada dia (Bs. 22.00)</strong>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/59178929539?text=Hola%20All%20In%20Fast%20Food%2C%20quisiera%20hacer%20un%20pedido" class="btn-whatsapp-comprobante" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp a All In Fast Food al 78929539">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            <span>Pedir o Reservar al 78929539</span>
+                        </a>
+                    </article>
+
+                    <article class="panel-bloque">
+                        <h2 class="titulo-seccion">Consultas de Menu, Almuerzo y Delivery</h2>
+                        <p class="micro-guia">Escribenos para consultar el menu del almuerzo de hoy, disponibilidad de costillas o zonas de entrega.</p>
+                        <form id="formConsultaCliente" class="formulario-estandar" novalidate>
+                            <div class="campo-grupo">
+                                <div class="cabecera-campo">
+                                    <label for="consultaMensaje" class="etiqueta-campo">Escribe tu consulta para All In Fast Food</label>
+                                    <span id="errConsultaMensaje" class="estado-validacion-campo"></span>
+                                </div>
+                                <textarea id="consultaMensaje" class="control-textarea" rows="3" placeholder="Ej. Cual es el segundo del almuerzo de hoy y hacen delivery hasta Plaza Villarroel?"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primario">Enviar Consulta</button>
+                        </form>
+                        <div id="feedbackConsultaCliente" class="feedback-formulario" aria-live="polite" hidden></div>
+                        <h3 class="subtitulo-bloque">Historial de Consultas y Respuestas</h3>
+                        <div id="listaConsultasCliente" class="lista-elementos" aria-live="polite"></div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="vista-op-pedidos" class="vista-panel" data-rol="operativo" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <h2 class="titulo-seccion">Pedidos Entrantes de Cocina y Delivery</h2>
+                        <button type="button" id="btnRefrescarPedidos" class="btn-secundario">Actualizar Pedidos</button>
+                    </div>
+                    <div id="listaPedidosOp" class="lista-elementos" aria-live="polite"></div>
+                </article>
+            </section>
+
+            <section id="vista-op-consultas" class="vista-panel" data-rol="operativo" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <h2 class="titulo-seccion">Consultas de Clientes</h2>
+                        <button type="button" id="btnRefrescarConsultas" class="btn-secundario">Actualizar Consultas</button>
+                    </div>
+                    <div id="listaConsultasOp" class="lista-elementos" aria-live="polite"></div>
+                </article>
+            </section>
+
+            <section id="vista-op-reservas" class="vista-panel" data-rol="operativo" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <h2 class="titulo-seccion">Reservas de Mesa y Costillas</h2>
+                        <button type="button" id="btnRefrescarReservas" class="btn-secundario">Actualizar Reservas</button>
+                    </div>
+                    <div id="listaReservasOp" class="lista-elementos" aria-live="polite"></div>
+                </article>
+            </section>
+
+            <section id="vista-op-productos" class="vista-panel" data-rol="operativo" hidden>
+                <div class="grilla-dos-col">
+                    <article class="panel-bloque">
+                        <h2 class="titulo-seccion">Agregar Plato Extra y Foto</h2>
+                        <form id="formProductoExtra" class="formulario-estandar" novalidate>
+                            <div class="campo-grupo">
+                                <label for="prodExtraNombre" class="etiqueta-campo">Nombre del Plato</label>
+                                <input type="text" id="prodExtraNombre" class="control-input" placeholder="Ej. Papas Fritas con Cheddar y Tocino">
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="prodExtraCategoria" class="etiqueta-campo">Seccion de Carta</label>
+                                <select id="prodExtraCategoria" class="control-select">
+                                    <option value="Almuerzo Diario">Almuerzo Diario</option>
+                                    <option value="Menu Nocturno">Menu Nocturno</option>
+                                    <option value="Hamburguesas">Hamburguesas</option>
+                                    <option value="Alitas">Alitas</option>
+                                    <option value="Chicken Fingers">Chicken Fingers</option>
+                                    <option value="Salsas">Salsas</option>
+                                </select>
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="prodExtraPrecio" class="etiqueta-campo">Precio Unitario (Bs.)</label>
+                                <input type="number" id="prodExtraPrecio" class="control-input" min="1" step="0.5" placeholder="Ej. 25.00">
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="prodExtraImagenUrl" class="etiqueta-campo">URL de Imagen (Opcional)</label>
+                                <input type="url" id="prodExtraImagenUrl" class="control-input" placeholder="https://ejemplo.com/plato.jpg">
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="prodExtraImagenArchivo" class="etiqueta-campo">Subir Foto desde Dispositivo (Comprimida a DataURL)</label>
+                                <input type="file" id="prodExtraImagenArchivo" class="control-input" accept="image/*">
+                            </div>
+                            <div id="contenedorPreviewFoto" class="preview-foto-box" hidden>
+                                <img id="previewProdExtra" class="tarjeta-ods__imagen tarjeta-ods__imagen--foto img-ampliable" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%231A1C21'/%3E%3C/svg%3E" alt="Vista previa de imagen del nuevo plato" loading="lazy">
+                            </div>
+                            <button type="submit" class="btn-primario">Guardar Plato en Carta</button>
+                        </form>
+                        <div id="feedbackProdExtra" class="feedback-formulario" aria-live="polite" hidden></div>
+                    </article>
+
+                    <article class="panel-bloque">
+                        <h2 class="titulo-seccion">Platos Extra Publicados</h2>
+                        <div id="listaProductosExtra" class="lista-elementos" aria-live="polite"></div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="vista-op-promo" class="vista-panel" data-rol="operativo" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <h2 class="titulo-seccion">Editor de Almuerzo del Dia y Promocion</h2>
+                        <span id="promoEstadoBadge" class="badge-estado badge-estado--pendiente">PAUSADA</span>
+                    </div>
+                    <p id="promoMetaVigencia" class="micro-guia">Actualiza aqui el Almuerzo Especial del Dia (Entrada, Sopa, Segundos y Postre) para mostrarlo en portada.</p>
+                    <form id="formPromoExpress" class="formulario-estandar" novalidate>
+                        <div class="campo-grupo">
+                            <label for="promoEditTitulo" class="etiqueta-campo">Titulo del Almuerzo o Especial</label>
+                            <input type="text" id="promoEditTitulo" class="control-input" placeholder="Ej. Almuerzo Especial del Dia">
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="promoEditDesc" class="etiqueta-campo">Menu del Dia (Entrada, Sopa, Segundos y Postre)</label>
+                            <textarea id="promoEditDesc" class="control-textarea" rows="3" placeholder="Entrada: Tucumanita de ricota | Sopa: Mani con macarron | Segundo: Filete/Chuleta/Milanesa | Postre: Duraznos al jugo"></textarea>
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="promoModoVigencia" class="etiqueta-campo">Modo de Vigencia y Temporizador</label>
+                            <select id="promoModoVigencia" class="control-select">
+                                <option value="evergreen" selected>Siempre activo (ventana de menu por visita)</option>
+                                <option value="15m">Oferta relampago global: 15 minutos (tiempo real)</option>
+                                <option value="24h">Menu del dia: 24 horas (tiempo real)</option>
+                                <option value="7d">Especial semanal: 7 dias (tiempo real)</option>
+                            </select>
+                            <p id="promoModoAyuda" class="card-item__meta">Visible de forma continua para cada comensal que ingresa a la carta.</p>
+                        </div>
+                        <div class="grilla-dos-col">
+                            <div class="campo-grupo">
+                                <label for="promoEditPrecio" class="etiqueta-campo">Precio del Almuerzo / Promo (Bs.)</label>
+                                <input type="number" id="promoEditPrecio" class="control-input" min="1" step="0.5" value="22">
+                            </div>
+                            <div id="grupoDuracionFlash" class="campo-grupo">
+                                <label for="promoEditDuracion" class="etiqueta-campo">Ventana por Visita (Minutos)</label>
+                                <input type="number" id="promoEditDuracion" class="control-input" min="1" max="1440" value="30">
+                            </div>
+                        </div>
+                        <label for="promoActivaCheck" class="fila-check-promo">
+                            <input type="checkbox" id="promoActivaCheck" class="control-check" checked>
+                            <span class="etiqueta-campo">Almuerzo / Especial activo y visible en portada</span>
+                        </label>
+                        <button type="submit" class="btn-primario">Guardar Almuerzo del Dia</button>
+                    </form>
+                    <div id="feedbackPromoOp" class="feedback-formulario" aria-live="polite" hidden></div>
+                </article>
+            </section>
+
+            <section id="vista-admin-control" class="vista-panel" data-rol="admin" hidden>
+                <div class="grilla-metricas">
+                    <article class="tarjeta-metrica">
+                        <span class="tarjeta-metrica__etiqueta">Pedidos Registrados</span>
+                        <strong id="metricaPedidos" class="tarjeta-metrica__valor">0</strong>
+                    </article>
+                    <article class="tarjeta-metrica">
+                        <span class="tarjeta-metrica__etiqueta">Ingresos Confirmados</span>
+                        <strong id="metricaIngresos" class="tarjeta-metrica__valor">Bs. 0.00</strong>
+                    </article>
+                    <article class="tarjeta-metrica">
+                        <span class="tarjeta-metrica__etiqueta">Consultas Pendientes</span>
+                        <strong id="metricaConsultasPend" class="tarjeta-metrica__valor">0</strong>
+                    </article>
+                    <article class="tarjeta-metrica">
+                        <span class="tarjeta-metrica__etiqueta">Platos Activos</span>
+                        <strong id="metricaProductosActivos" class="tarjeta-metrica__valor">14</strong>
+                    </article>
+                </div>
+
+                <div class="grilla-dos-col">
+                    <article class="panel-bloque">
+                        <div class="tarjeta-operativa__cabecera">
+                            <h2 class="titulo-seccion">Actividad en Vivo</h2>
+                            <button type="button" id="btnRefrescarActividad" class="btn-secundario">Actualizar</button>
+                        </div>
+                        <div id="listaActividadClientes" class="lista-elementos" aria-live="polite"></div>
+                    </article>
+
+                    <article class="panel-bloque">
+                        <h2 class="titulo-seccion">Cuentas Internas (catalogo_allin)</h2>
+                        <form id="formNuevaCuentaInterna" class="formulario-estandar" novalidate>
+                            <div class="campo-grupo">
+                                <label for="adminNuevoUsuario" class="etiqueta-campo">Usuario Interno</label>
+                                <input type="text" id="adminNuevoUsuario" class="control-input" placeholder="Nombre de usuario">
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="adminNuevaClave" class="etiqueta-campo">Clave de Acceso</label>
+                                <input type="password" id="adminNuevaClave" class="control-input" placeholder="Minimo 6 caracteres">
+                            </div>
+                            <div class="campo-grupo">
+                                <label for="adminNuevoRol" class="etiqueta-campo">Rol Asignado</label>
+                                <select id="adminNuevoRol" class="control-select">
+                                    <option value="encargado">Encargado</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primario">Crear Cuenta Interna</button>
+                        </form>
+                        <div id="feedbackCuentaInterna" class="feedback-formulario" aria-live="polite" hidden></div>
+                        <h3 class="subtitulo-bloque">Directorio de Cuentas</h3>
+                        <ul id="listaCuentasInternas" class="lista-elementos" aria-live="polite"></ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="vista-admin-auditoria" class="vista-panel" data-rol="admin" hidden>
+                <article class="panel-bloque">
+                    <div class="tarjeta-operativa__cabecera">
+                        <h2 class="titulo-seccion">Bitacora DOM y Auditoria del Sistema</h2>
+                        <div class="fila-tactil">
+                            <button type="button" id="btnLimpiarBitacora" class="btn-secundario">Limpiar Bitacora Local</button>
+                            <button type="button" id="btnPurgarActividadRemota" class="btn-peligro">Purgar Actividad Remota</button>
+                        </div>
+                    </div>
+                    <ul id="listaBitacoraDom" class="consola-bitacora" aria-live="polite"></ul>
+                </article>
+
+                <!-- Semana 3 - Desarrollo Agil y Smoke Testing -->
+                <section class="panel-auditoria" aria-label="Auditoria rapida del DOM">
+                    <h2 class="titulo-seccion">Smoke Test DOM</h2>
+                    <button type="button" id="btnSmokeTest" class="btn-primario btn-tactil">Ejecutar Smoke Test DOM</button>
+                    <p id="salidaAudit" aria-live="polite">Estado: Listo para verificar.</p>
+                </section>
+
+                <!-- Semana 3 - Cierre A11Y HTML5 y HMR -->
+                <section class="panel-cierre-a11y" aria-label="Verificacion semantica HTML5 en vivo">
+                    <h2 class="titulo-seccion">Auditoria Semantica HTML5 sin Recarga</h2>
+                    <button type="button" id="btnAuditarA11Y" class="btn-primario btn-tactil">Verificar Semantica HTML5 (Sin Recarga)</button>
+                    <p id="reporteA11Y" role="status" aria-live="polite">Estado: Listo para auditar.</p>
+                </section>
+            </section>
+
+            <footer class="pie-institucional">
+                <p class="pie-institucional__texto">All In Fast Food - Genaro Gamarra 1886, Zona Miraflores | Reservas y Delivery: 78929539.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Semana 1 - Menu Hamburguesa -->
+    <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+    <aside id="drawerMenuMovil" class="drawer-movil" role="dialog" aria-modal="true" aria-label="Menu de navegacion All In Fast Food" aria-hidden="true">
+        <div class="drawer-movil__tirador" aria-hidden="true"></div>
+        <div class="drawer-movil__cabecera">
+            <div class="drawer-movil__identidad">
+                <div class="drawer-movil__marca">
+                    <img src="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1" alt="Logo oficial de All In Fast Food" class="marca-logo-img">
+                    <strong>All In Fast Food</strong>
+                </div>
+                <div class="drawer-movil__sesion">
+                    <span id="drawerUsuarioActivo" class="drawer-movil__usuario">Invitado</span>
+                    <span id="drawerRolBadge" class="badge-rol badge-rol--cliente">Cliente</span>
+                </div>
+            </div>
+            <button type="button" id="btnCerrarDrawer" class="drawer-movil__cerrar" aria-label="Cerrar menu lateral">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <nav id="drawerListaNav" class="drawer-movil__nav" aria-label="Secciones de la aplicacion">
+            <button type="button" class="drawer-movil__item drawer-movil__item--activo activo" data-vista="vista-catalogo" data-rol="cliente">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Carta</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vistaMisPedidos" data-rol="cliente">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/></svg>
+                <span>Mis Pedidos</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-cotizador" data-rol="cliente">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/></svg>
+                <span>Armar Combo</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-contacto" data-rol="cliente">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Ubicanos</span>
+            </button>
+
+            <button type="button" class="drawer-movil__item" data-vista="vista-admin-control" data-rol="admin" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Control</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-op-pedidos" data-rol="operativo" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/></svg>
+                <span>Pedidos</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-op-consultas" data-rol="operativo" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+                <span>Consultas</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-op-reservas" data-rol="operativo" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Reservas</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-op-productos" data-rol="operativo" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Platos</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-op-promo" data-rol="operativo" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>Almuerzo</span>
+            </button>
+            <button type="button" class="drawer-movil__item" data-vista="vista-admin-auditoria" data-rol="admin" hidden>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Auditoria</span>
+            </button>
+        </nav>
+
+        <div class="drawer-movil__pie">
+            <button type="button" id="btnDrawerAcceso" class="drawer-movil__accion">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Mi Perfil / Iniciar Sesion</span>
+            </button>
+            <button type="button" id="btnDrawerTema" class="drawer-movil__accion">
+                <svg class="icono-luna" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icono-sol" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/></svg>
+                <span id="drawerTemaTexto">Cambiar a Modo Claro</span>
+            </button>
+            <div class="drawer-movil__estado">
+                <span>Estado de conexion</span>
+                <span id="drawerEstadoRed" class="indicador-red" role="status" aria-live="polite">ONLINE</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Semana 3 - Flujo de Pago Rapido -->
+    <aside id="barraPagoRapido" class="barra-pago-rapido" aria-label="Resumen rapido de pedido" hidden>
+        <div class="barra-pago-rapido__info">
+            <strong id="barraPagoResumen">0 items | Bs. 0.00</strong>
+            <span class="barra-pago-rapido__ayuda">Listo para enviar a cocina All In</span>
+        </div>
+        <div class="barra-pago-rapido__acciones">
+            <button type="button" id="btnBarraVerCarrito" class="barra-pago-rapido__btn-sec">Ver pedido</button>
+            <button type="button" id="btnBarraPagarAhora" class="barra-pago-rapido__btn-pri">Pagar ahora</button>
+        </div>
+    </aside>
+
+    <!-- Semana 3 - Redes Sociales Oficiales -->
+    <nav id="barraRedesSociales" class="barra-redes" aria-label="Canal oficial de pedidos por WhatsApp">
+        <span class="barra-redes__etiqueta">Pedidos y reservas por WhatsApp:</span>
+        <a href="https://wa.me/59178929539?text=Hola%20All%20In%20Fast%20Food%2C%20quisiera%20hacer%20un%20pedido" class="barra-redes__btn barra-redes__btn--wa" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp oficial de All In Fast Food al 78929539">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span class="barra-redes__texto">WhatsApp 78929539</span>
+        </a>
+    </nav>
+
+    <!-- Semana 3 - Carrito Boutique Festivo -->
+    <div id="carritoBackdrop" class="carrito-backdrop" hidden></div>
+    <aside id="panelCarritoDrawer" class="carrito-drawer" role="dialog" aria-modal="true" aria-labelledby="tituloCarritoFiesta" aria-label="Carrito de pedidos" hidden>
+        <div class="carrito-drawer__cabecera">
+            <div class="carrito-drawer__tirador" aria-hidden="true"></div>
+            <div class="carrito-drawer__cabecera-fila">
+                <div class="carrito-drawer__titulo-grupo">
+                    <span class="carrito-drawer__icono-cabecera" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+                    </span>
+                    <div class="carrito-drawer__titulo-texto">
+                        <h2 id="tituloCarritoFiesta" class="carrito-drawer__titulo">Mi Pedido All In</h2>
+                        <span id="carritoCabeceraBadge" class="carrito-drawer__badge">0 platos</span>
+                    </div>
+                </div>
+                <button type="button" id="btnCerrarCarrito" class="carrito-drawer__cerrar" aria-label="Cerrar carrito" title="Cerrar carrito">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="carrito-drawer__cuerpo">
+            <div id="carritoVacioMensaje" class="carrito-vacio">
+                <div class="carrito-vacio__icono" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" width="54" height="54" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="32" cy="32" r="24" stroke-dasharray="7 5"/>
+                        <path d="M22 34h20M26 26h12M24 42h16"/>
+                    </svg>
+                </div>
+                <p class="carrito-vacio__titulo">Tu mesa esta vacia</p>
+                <p class="carrito-vacio__texto">Agrega hamburguesas, alitas, chicken fingers, costillas o el almuerzo del dia desde la carta.</p>
+                <button type="button" id="btnExplorarDesdeCarrito" class="carrito-vacio__btn">Ver la Carta</button>
+            </div>
+            <ul id="listaItemsCarrito" class="carrito-lista" hidden></ul>
+        </div>
+
+        <div class="carrito-drawer__pie">
+            <div class="carrito-ticket">
+                <div class="carrito-ticket__fila">
+                    <span>Items totales</span>
+                    <strong id="carritoUnidades">0</strong>
+                </div>
+                <div class="carrito-ticket__fila">
+                    <span>Subtotal</span>
+                    <strong id="carritoSubtotal">Bs. 0.00</strong>
+                </div>
+                <div class="carrito-ticket__fila">
+                    <span>Impuesto (13%)</span>
+                    <strong id="carritoImpuesto">Bs. 0.00</strong>
+                </div>
+                <div class="carrito-ticket__total">
+                    <span>Total a Pagar</span>
+                    <strong id="carritoTotal" class="carrito-ticket__monto-total">Bs. 0.00</strong>
+                </div>
+            </div>
+            <div class="carrito-acciones">
+                <button type="button" id="btnAbrirCheckout" class="carrito-acciones__confirmar">Confirmar Pedido</button>
+                <div class="carrito-acciones__secundarias">
+                    <button type="button" id="btnIrAMisPedidosCarrito" class="carrito-acciones__pedidos">Mis Pedidos</button>
+                    <button type="button" id="btnVaciarCarrito" class="carrito-acciones__vaciar">Vaciar</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div id="modalCheckout" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloModalCheckout" hidden>
+        <div class="modal-caja">
+            <div class="modal-cabecera">
+                <h2 id="tituloModalCheckout" class="titulo-seccion">Confirmar Pedido All In</h2>
+                <button type="button" id="btnCerrarCheckout" class="btn-secundario" aria-label="Cerrar confirmacion">Cerrar</button>
+            </div>
+            <div id="bloqueTimerCheckout" class="panel-bloque">
+                <p class="card-item__meta">Precio asegurado por: <strong id="temporizadorTexto">05:00</strong></p>
+                <div class="barra-progreso">
+                    <div id="barraProgresoTiempo" class="barra-progreso__relleno"></div>
+                </div>
+            </div>
+            <div id="avisoAutocompletadoCheckout" class="aviso-autocompletado" role="status" aria-live="polite" hidden>
+                <div class="aviso-autocompletado__texto">
+                    <strong>Autocompletado desde tu perfil</strong>
+                    <span>Cargamos tu direccion, salsas preferidas y celular guardados localmente.</span>
+                </div>
+                <button type="button" id="btnEditarPerfilDesdeCheckout" class="btn-secundario">Editar perfil</button>
+            </div>
+            <form id="formCheckout" class="formulario-estandar" novalidate>
+                <div id="grupoCheckoutNombreCliente" class="campo-grupo">
+                    <label for="checkoutNombreCliente" class="etiqueta-campo">Tu nombre</label>
+                    <input type="text" id="checkoutNombreCliente" class="control-input" placeholder="Ingresa tu nombre completo" required>
+                </div>
+                <div class="campo-grupo">
+                    <label for="checkoutModalidad" class="etiqueta-campo">Modalidad de Entrega</label>
+                    <select id="checkoutModalidad" class="control-select">
+                        <option value="Delivery a Domicilio">Delivery a Domicilio</option>
+                        <option value="Retiro en Local All In">Retiro en Local All In</option>
+                        <option value="Consumo en Mesa">Consumo en Mesa</option>
+                    </select>
+                </div>
+                <div class="campo-grupo">
+                    <label for="checkoutCelular" class="etiqueta-campo">Celular / WhatsApp de contacto (opcional)</label>
+                    <input type="tel" id="checkoutCelular" class="control-input" inputmode="numeric" placeholder="Ej. 70012345">
+                </div>
+                <div class="campo-grupo">
+                    <label for="checkoutNotasEntrega" class="etiqueta-campo">Direccion, zona y salsas preferidas (opcional)</label>
+                    <input type="text" id="checkoutNotasEntrega" class="control-input" placeholder="Ej. Referencia de entrega, Salsa Barbacoa y Picante">
+                </div>
+                <div class="campo-grupo">
+                    <label for="checkoutPago" class="etiqueta-campo">Forma de Pago</label>
+                    <select id="checkoutPago" class="control-select">
+                        <option value="Pago por QR">Pago por QR</option>
+                        <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                        <option value="Efectivo Contra Entrega">Efectivo Contra Entrega</option>
+                    </select>
+                </div>
+                <!-- Semana 3 - Panel Dinamico de Forma de Pago -->
+                <div id="panelDetallePago" class="panel-detalle-pago" aria-live="polite"></div>
+                <button type="submit" id="btnSubmitCheckout" class="btn-primario">Confirmar Pedido</button>
+            </form>
+            <div id="feedbackCheckout" class="feedback-formulario" aria-live="polite" hidden></div>
+            <div id="invitacionCuentaCheckout" class="micro-guia fila-tactil">
+                <span>Quieres autocompletar tu direccion, salsas y celular en futuros pedidos? Crea tu cuenta rapida.</span>
+                <button type="button" class="btn-secundario btn-abrir-registro-rapido">Crear cuenta rapida</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalAcceso" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloModalAcceso" hidden>
+        <div class="modal-caja">
+            <div class="modal-cabecera">
+                <div class="modal-cabecera__marca">
+                    <img src="https://www.dropbox.com/scl/fi/3f7n6ezktped54rgafyhz/Logo-ALL-IN.png?rlkey=3hu57t9whtuqykp2230taxzt8&st=o5to91g6&raw=1" alt="Logo oficial de All In Fast Food" class="marca-logo-img">
+                    <h2 id="tituloModalAcceso" class="titulo-seccion">Cuenta All In Fast Food</h2>
+                </div>
+                <button type="button" id="btnCerrarAcceso" class="btn-secundario" aria-label="Cerrar ventana de acceso">Cerrar</button>
+            </div>
+            <p id="resumenSesionModal" class="micro-guia">Sesion actual: Invitado (Cliente)</p>
+
+            <section id="bloquePerfilCliente" class="perfil-cliente-box" aria-label="Perfil y autocompletado de cliente" hidden>
+                <div class="perfil-cliente-box__cab">
+                    <span class="ficha-etiqueta ficha-etiqueta--verde">PERFIL CLIENTE</span>
+                    <h3 class="subtitulo-bloque">Autocompletado Rapido para Delivery</h3>
+                    <p class="card-item__meta">Tus datos se guardan localmente en este dispositivo para agilizar el checkout.</p>
+                </div>
+                <form id="formPerfilCliente" class="formulario-estandar" novalidate>
+                    <div class="campo-grupo">
+                        <label for="perfilDireccion" class="etiqueta-campo">Direccion / Zona de entrega</label>
+                        <input type="text" id="perfilDireccion" class="control-input" placeholder="Ej. Zona, calle y numero de casa o edificio">
+                    </div>
+                    <div class="campo-grupo">
+                        <label for="perfilSalsasNotas" class="etiqueta-campo">Salsas y notas preferidas</label>
+                        <input type="text" id="perfilSalsasNotas" class="control-input" placeholder="Ej. Salsa Barbacoa y Picante aparte, sin cebolla">
+                    </div>
+                    <div class="campo-grupo">
+                        <label for="perfilCelular" class="etiqueta-campo">Celular / WhatsApp</label>
+                        <input type="tel" id="perfilCelular" class="control-input" inputmode="numeric" placeholder="Ej. 70012345">
+                    </div>
+                    <button type="submit" id="btnGuardarPerfilCliente" class="btn-primario">Guardar Datos de Entrega</button>
+                </form>
+                <div id="feedbackPerfilCliente" class="feedback-formulario" aria-live="polite" hidden></div>
+            </section>
+
+            <div id="bloqueFormulariosAcceso" class="bloque-formularios-acceso">
+                <div class="tabs-acceso" role="tablist" aria-label="Tipo de acceso">
+                    <button type="button" class="btn-subtab btn-subtab--activo" data-grupo="acceso" data-subtab="subtab-login">Iniciar Sesion</button>
+                    <button type="button" class="btn-subtab" data-grupo="acceso" data-subtab="subtab-registro">Registro Cliente</button>
+                </div>
+
+                <div id="subtab-login" class="panel-subtab" data-grupo="acceso">
+                    <form id="formLogin" class="formulario-estandar" novalidate>
+                        <div class="campo-grupo">
+                            <label for="loginUsuario" class="etiqueta-campo">Usuario</label>
+                            <input type="text" id="loginUsuario" class="control-input" placeholder="Ingresa tu usuario" autocomplete="username">
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="loginClave" class="etiqueta-campo">Clave</label>
+                            <input type="password" id="loginClave" class="control-input" placeholder="Ingresa tu clave" autocomplete="current-password">
+                        </div>
+                        <button type="submit" class="btn-primario">Ingresar</button>
+                    </form>
+                </div>
+
+                <div id="subtab-registro" class="panel-subtab" data-grupo="acceso" hidden>
+                    <form id="formRegistroCliente" class="formulario-estandar" novalidate>
+                        <div class="campo-grupo">
+                            <label for="regNombreCompleto" class="etiqueta-campo">Nombre Completo</label>
+                            <input type="text" id="regNombreCompleto" class="control-input" placeholder="Ingresa tu nombre y apellido" autocomplete="name">
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="regUsuario" class="etiqueta-campo">Nuevo Usuario Cliente</label>
+                            <input type="text" id="regUsuario" class="control-input" placeholder="Elige tu nombre de usuario">
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="regClave" class="etiqueta-campo">Clave (minimo 6 caracteres)</label>
+                            <input type="password" id="regClave" class="control-input" placeholder="Crea tu clave">
+                        </div>
+                        <button type="submit" class="btn-primario">Crear Cuenta Cliente</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="feedbackAcceso" class="feedback-formulario" aria-live="polite" hidden></div>
+
+            <div id="bloqueCerrarSesion" class="bloque-sesion-activa" hidden>
+                <div class="perfil-activo-card">
+                    <div class="perfil-activo-card__info">
+                        <span class="perfil-activo-card__etiqueta">Sesion iniciada</span>
+                        <strong id="perfilActivoUsuario" class="perfil-activo-card__usuario">Invitado</strong>
+                    </div>
+                    <span id="perfilActivoRol" class="badge-rol badge-rol--cliente">Cliente</span>
+                </div>
+                <button type="button" id="btnCerrarSesion" class="btn-peligro btn-cerrar-sesion-full" hidden>Cerrar Sesion</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="contenedorToasts" class="contenedor-toasts" aria-live="polite"></div>
+
+    <div id="lightboxImagenVisor" class="lightbox-visor" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+        <div class="lightbox-visor__caja">
+            <button type="button" id="btnCerrarLightbox" class="lightbox-visor__cerrar" aria-label="Cerrar vista ampliada">Cerrar</button>
+            <img id="lightboxImagenFoto" class="lightbox-visor__imagen" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E" alt="Vista ampliada" loading="lazy">
+            <p id="lightboxImagenTitulo" class="lightbox-visor__titulo"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Semana 3 - DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+    <script src="./JS/script.js"></script>
+</body>
+</html>
